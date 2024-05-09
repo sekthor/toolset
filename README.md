@@ -8,8 +8,9 @@ It deploys [argocd](https://argo-cd.readthedocs.io/) in a sensible default confi
 Argocd is always installed.
 All other tools can be disabled in the `values.yaml`
 
-| tool                   | namespace | purpose |
-|:-----------------------|:----------|:--------|
-| argocd                 | argocd    | deploy and reconcile all applications on the cluster |
-| nfs-subdir-provisioner | storage   | provide a storage class to provision pv for pvc      |
+| tool                                                                                         | namespace | purpose |
+|:---------------------------------------------------------------------------------------------|:----------|:--------|
+| [argocd](https://argo-cd.readthedocs.io/)                                                    | argocd    | deploy and reconcile all applications on the cluster |
+| [nfs-subdir-provisioner](https://github.com/kubernetes-sigs/nfs-subdir-external-provisioner) | storage   | provide a storage class to provision pv for pvc      |
+| [zalando postgres operator](https://opensource.zalando.com/postgres-operator/)               | postgres-operator | deploy & manage postgres databases           |
 
