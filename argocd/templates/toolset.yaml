@@ -1,0 +1,16 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: toolset
+  namespace: argocd
+spec:
+  project: tools
+  source:
+    path: tools
+    repoURL: https://github.com/sekthor/toolset
+    targetRevision: main
+    helm:
+      releaseName: toolset
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: argocd
