@@ -1,0 +1,6 @@
+{{ if .Values.apps.nfs.enabled }}
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: storage
+{{ end }}

@@ -1,0 +1,31 @@
+{{ if .Values.apps.nfs.enabled }}
+{{ range $key, $value := .Values.apps.nfs.provisioners }}
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: {{ $value.name }}
+  namespace: argocd
+spec:
+  project: tools
+  source:
+    chart: nfs-subdir-external-provisioner
+    repoURL: https://kubernetes-sigs.github.io/nfs-subdir-external-provisioner
+    targetRevision: 4.0.18
+    helm:
+      releaseName: {{ $value.name }}
+      valuesObject:
+        nfs:
+          path: {{ $value.path }}
+          server: {{ $value.server }}
+        storageClass:
+          archiveOnDelete: false
+          create: true
+          defaultClass: true
+          name: {{ $value.name }}
+          provisionerName: {{ $value.name }}
+          reclaimPolicy: Delete
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: storage
+{{ end }}
+{{ end }}

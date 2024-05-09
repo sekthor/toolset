@@ -1,0 +1,18 @@
+{{ if .Values.apps.postgres.enabled }}
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: postgres-operator
+  namespace: argocd
+spec:
+  project: tools
+  source:
+    chart: postgres-operator
+    repoURL: https://opensource.zalando.com/postgres-operator/charts/postgres-operator
+    targetRevision: 1.11.0
+    helm:
+      releaseName: postgres-operator
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: postgres-operator
+{{ end }}
