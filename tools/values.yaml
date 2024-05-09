@@ -1,0 +1,9 @@
+apps:
+  postgres:
+    enabled: true
+  nfs:
+    enabled: true
+    provisioners:
+    - name: data-hot
+      server: 192.168.1.106
+      path: /mnt/data0/k8s/data-hot
