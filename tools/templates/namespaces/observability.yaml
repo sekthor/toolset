@@ -1,0 +1,6 @@
+{{ if .Values.apps.grafana.enabled }}
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: observability
+{{ end }}
