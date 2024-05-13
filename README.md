@@ -13,4 +13,4 @@ All other tools can be disabled in the `values.yaml`
 | [argocd](https://argo-cd.readthedocs.io/)                                                    | argocd    | deploy and reconcile all applications on the cluster |
 | [nfs-subdir-provisioner](https://github.com/kubernetes-sigs/nfs-subdir-external-provisioner) | storage   | provide a storage class to provision pv for pvc      |
 | [zalando postgres operator](https://opensource.zalando.com/postgres-operator/)               | postgres-operator | deploy & manage postgres databases           |
-
+| [lgtm-distributed](https://github.com/grafana/helm-charts/tree/main/charts/lgtm-distributed) | observability | complete grafana observability stack ([loki](https://grafana.com/oss/loki/), [grafana](https://grafana.com/oss/grafana/), [tempo](https://grafana.com/oss/tempo/), [mimir](https://grafana.com/oss/mimir/)) |
