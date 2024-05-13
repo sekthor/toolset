@@ -2,16 +2,16 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: grafana
+  name: lgtm-distributed
   namespace: argocd
 spec:
   project: tools
   source:
-    chart: grafana
+    chart: lgtm-distributed
     repoURL: https://grafana.github.io/helm-charts
-    targetRevision: 7.3.11
+    targetRevision: 1.0.1
     helm:
-      releaseName: grafana
+      releaseName: lgtm
   destination:
     server: "https://kubernetes.default.svc"
     namespace: observability
