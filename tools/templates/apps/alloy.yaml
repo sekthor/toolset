@@ -23,7 +23,6 @@ spec:
               }
 
               discovery.kubernetes "metrics_server" {
-
                 role = "pod"
 
                 selectors {
