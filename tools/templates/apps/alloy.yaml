@@ -12,6 +12,34 @@ spec:
     targetRevision: 0.2.0
     helm:
       releaseName: alloy
+      valuesObject:
+        alloy:
+          configMap:
+            content: |
+              prometheus.remote_write mimir {
+                endpoint {
+                  url = http://lgtm-mimir-distributor/api/v1/push
+                }
+              }
+
+              discovery.kubernetes metrics_server {
+
+                role = "pod"
+
+                selectors {
+                  label = "k8s-app=metrics-server"
+                }
+
+                namespaces {
+                  names = ["kube-system"]
+                }
+              }
+
+              prometheus.scrape kubemetrics {
+                targets = discovery.kubernetes.metrics_server.targets
+                forward_to = [prometheus.remote_write.mimir.receiver]
+              }
+
   destination:
     server: "https://kubernetes.default.svc"
     namespace: observability

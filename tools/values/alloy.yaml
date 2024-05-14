@@ -1,0 +1,5 @@
+prometheus.remote_write mimir {
+  endpoint {
+    url = http://lgtm-mimir-distributor/api/v1/push
+  }
+}
