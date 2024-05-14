@@ -16,6 +16,21 @@ spec:
         alloy:
           configMap:
             content: |
+              otelcol.receiver.otlp "otel_receiver" {
+                http {}
+                grpc {}
+
+                output {
+                  metrics = [otelcol.exporter.otlp.otel_metrics_exporter.input]
+                }
+              }
+              
+              otelcol.exporter.otlp "otel_metrics_exporter" {
+                client {
+                  endpoint = "http://lgtm-mimir-nginx/otlp"
+                }
+              }
+
               prometheus.remote_write "mimir" {
                 endpoint {
                   url = "http://lgtm-mimir-distributor/api/v1/push"
