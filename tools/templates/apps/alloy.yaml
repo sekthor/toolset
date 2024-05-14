@@ -26,6 +26,7 @@ spec:
                 role = "pod"
 
                 selectors {
+                  role = "pod"
                   label = "k8s-app=metrics-server"
                 }
 
