@@ -1,0 +1,27 @@
+{{ if .Values.apps.grafana.enabled }}
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: alloy
+  namespace: argocd
+spec:
+  project: tools
+  source:
+    chart: alloy
+    repoURL: https://grafana.github.io/helm-charts
+    targetRevision: 0.2.0
+    helm:
+      releaseName: alloy
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: observability
+
+  info:
+    - name: loki docs
+      value: 'https://grafana.com/docs/alloy/latest/'
+  
+  syncPolicy:
+    automated: 
+      prune: true
+      selfHeal: true
+{{ end }}
