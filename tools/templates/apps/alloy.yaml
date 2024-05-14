@@ -16,13 +16,13 @@ spec:
         alloy:
           configMap:
             content: |
-              prometheus.remote_write mimir {
+              prometheus.remote_write "mimir" {
                 endpoint {
-                  url = http://lgtm-mimir-distributor/api/v1/push
+                  url = "http://lgtm-mimir-distributor/api/v1/push"
                 }
               }
 
-              discovery.kubernetes metrics_server {
+              discovery.kubernetes "metrics_server" {
 
                 role = "pod"
 
@@ -35,7 +35,7 @@ spec:
                 }
               }
 
-              prometheus.scrape kubemetrics {
+              prometheus.scrape "kubemetrics" {
                 targets = discovery.kubernetes.metrics_server.targets
                 forward_to = [prometheus.remote_write.mimir.receiver]
               }
