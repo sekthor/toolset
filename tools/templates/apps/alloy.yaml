@@ -21,13 +21,13 @@ spec:
                 grpc {}
 
                 output {
-                  metrics = [otelcol.exporter.otlp.otel_metrics_exporter.input]
+                  metrics = [otelcol.exporter.otlphttp.otel_metrics_exporter.input]
                 }
               }
               
-              otelcol.exporter.otlp "otel_metrics_exporter" {
+              otelcol.exporter.otlphttp "otel_metrics_exporter" {
                 client {
-                  endpoint = "http://lgtm-mimir-nginx/otlp"
+                  endpoint = "http://lgtm-mimir-nginx/otlp:80"
                 }
               }
 
