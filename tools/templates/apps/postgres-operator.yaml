@@ -15,4 +15,13 @@ spec:
   destination:
     server: "https://kubernetes.default.svc"
     namespace: postgres-operator
+
+  info:
+    - name: helm values
+      value: 'https://github.com/zalando/postgres-operator/blob/master/charts/postgres-operator/values.yaml'
+  
+  syncPolicy:
+    automated: 
+      prune: true
+      selfHeal: true
 {{ end }}

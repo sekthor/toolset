@@ -27,5 +27,14 @@ spec:
   destination:
     server: "https://kubernetes.default.svc"
     namespace: storage
+
+  info:
+    - name: helm values
+      value: 'https://github.com/kubernetes-sigs/nfs-subdir-external-provisioner/tree/master/charts/nfs-subdir-external-provisioner'
+  
+  syncPolicy:
+    automated: 
+      prune: true
+      selfHeal: true
 {{ end }}
 {{ end }}

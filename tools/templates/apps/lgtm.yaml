@@ -15,4 +15,19 @@ spec:
   destination:
     server: "https://kubernetes.default.svc"
     namespace: observability
+
+  info:
+    - name: loki docs
+      value: 'https://grafana.com/docs/loki/latest/'
+    - name: grafana docs
+      value: 'https://grafana.com/docs/grafana/latest/'
+    - name: tempo docs
+      value: 'https://grafana.com/docs/tempo/latest/'
+    - name: mimir docs
+      value: 'https://grafana.com/docs/mimir/latest/'
+  
+  syncPolicy:
+    automated: 
+      prune: true
+      selfHeal: true
 {{ end }}
